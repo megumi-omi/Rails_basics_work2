@@ -21,17 +21,18 @@ class PicturesController < ApplicationController
 
   # POST /pictures or /pictures.json
   def create
-    @picture = current_user.pictures.build(picture_params)
-
-    respond_to do |format|
-      if @picture.save
-        format.html { redirect_to picture_url(@picture), notice: "Picture was successfully created." }
-        format.json { render :show, status: :created, location: @picture }
+    Picture.create(picture_params)
+    # @picture = current_user.pictures.build(picture_params)
+    redirect_to new_picture_path
+    if params[:back]
+      render :new
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+        if @picture.save
+          redirect_to pictures_path, "posted"
+        else
+          render :new
+        end
       end
-    end
   end
 
   # PATCH/PUT /pictures/1 or /pictures/1.json
@@ -58,8 +59,10 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = current_user.pictures.build(picture_params)    
+    @picture = Picture.new(picture_params)
+    render :new
   end
+    # @picture = current_user.pictures.build(picture_params)
 
   private
     # Use callbacks to share common setup or constraints between actions.

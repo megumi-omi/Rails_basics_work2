@@ -1,0 +1,15 @@
+<h3>Can I send it?</h3>
+
+<%= form_with(model: @picture, url: pictures_path, local: true)do |form| %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :content %>
+
+  <p>picture:<%= @picture.image %></p>
+  <p>content:<%= @picture.content %></p>
+  <%= form.submit "post" %>
+
+  <%= form_submit 'back', name: 'back' %>
+
+  <% end %>
+
+

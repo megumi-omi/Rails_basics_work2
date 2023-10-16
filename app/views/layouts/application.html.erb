@@ -18,6 +18,7 @@
     <% if logged_in? %>
       <%= link_to "Profile", edit_user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      <%= link_to "Home", pictures_path %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>

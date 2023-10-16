@@ -1,15 +1,16 @@
-<h3>Can I send it?</h3>
+<h3>確認画面</h3>
 
-<%= form_with(model: @picture, url: pictures_path, local: true)do |form| %>
-  <%= form.hidden_field :image %>
+<%= form_with(model: @picture, local: true, url: pictures_path)do |form| %>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
+  <%= form.submit "投稿する" %>
+<% end %>
 
-  <p>picture:<%= @picture.image %></p>
-  <p>content:<%= @picture.content %></p>
-  <%= form.submit "post" %>
-
-  <%= form_submit 'back', name: 'back' %>
-
-  <% end %>
+<%= form_with(model: @picture, local: true, url: new_picture_path, method: "get")do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+  <%= form.submit '戻る', name: 'back' %>
+<% end %>
 
 

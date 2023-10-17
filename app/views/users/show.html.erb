@@ -8,4 +8,8 @@
   <%= image_tag @user.avatar.url %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+<% end %>
+
+  <%= link_to 'Back', pictures_path %>

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @picture.image.url %>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
 </p>
 
 <p>
@@ -10,5 +10,8 @@
   <%= @picture.content %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% if @picture == current_user %>
+  <%= link_to 'Edit', edit_picture_path(@user) %>
+<% end %>
+
 <%= link_to 'Back', pictures_path %>

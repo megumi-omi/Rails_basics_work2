@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: %i[ show edit update destroy ]
+  before_action :set_picture, only: %i[ show update destroy ]
 
   def index
     @pictures = Picture.all
@@ -13,6 +13,13 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    @picture = Picture.find(params[:id])
+    if @picture == current_user
+      render :edit
+    else
+      flash.now[:danger] = '編集権限がありません'
+      render :show
+    end
   end
 
   def create
@@ -60,6 +67,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:image, :content)
+    params.require(:picture).permit(:image, :image_cache, :content)
   end
 end

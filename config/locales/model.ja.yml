@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      picture: 画像
+      user: ユーザー
+      favorite: お気に入り
+    attributes:
+      picture:
+        mage: 画像
+        content: 内容
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード

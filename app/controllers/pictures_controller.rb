@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
-    if @picture == current_user
+    if @picture.user_id == current_user.id
       render :edit
     else
       flash.now[:danger] = '編集権限がありません'
@@ -50,10 +50,12 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture.destroy
-    respond_to do |format|
-      format.html { redirect_to pictures_url, notice: "Picture was successfully destroyed." }
-      format.json { head :no_content }
+    if @picture.user_id == current_user.id
+        @picture.destroy
+        redirect_to pictures_path, notice: '削除しました'
+    else
+      flash.now[:danger] = '削除権限がありません'
+      render :show
     end
   end
 

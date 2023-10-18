@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+.header{
+  background-color: rgb(199, 141, 211);
+  color: white;
+  height: 80px;
+}
+.top_menu li{
+  float: left;
+  padding: 15px;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+.footer{
+  background-color: rgb(199, 141, 211);
+  color: white;
+  height: 30px;
+}

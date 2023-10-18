@@ -17,6 +17,9 @@ gem 'mini_magick'
 gem 'bcrypt'
 gem 'dotenv-rails'
 gem 'rexml'
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -19,6 +19,7 @@
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
       <%= link_to "Home", pictures_path %>
+      <%= link_to 'New Picture', new_picture_path %>
       <%= link_to "Favorite", favorites_path %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
